@@ -8,10 +8,11 @@ def p_task_1():
     n_radius: int = -1
     c_pi: int = 3.14159
     print("Посчитаем площадь круга")
-    n_radius = input("Введите радиус:")
-    if not n_radius.isdigit():
+    s_radius = input("Введите радиус:")
+    if not s_radius.isdigit():
         print("Некорректная площадь")
         return
+    n_radius=int(s_radius)
     print("Площадь круга= {S}".format(S=2 * c_pi * int(n_radius)))
 
 
@@ -53,7 +54,7 @@ def p_task_3():
 
 def p_task_4():
     index: int = 0
-    n_max: int = 0;
+    n_max: int = 0
     user_string = input("Введите целочисленное число: ")
     if not user_string.isdigit():
         print("Некорректный ввод")
