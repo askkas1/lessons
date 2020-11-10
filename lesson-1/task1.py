@@ -93,15 +93,20 @@ def p_task_5():
 def p_task_6():
     n_start_km: int = 0
     n_target_km: int = 0
-    n_day_of_target: int = 0
+    n_prev_day_km: int = 0
+    n_day_of_target: int = 1
     s_start_km = input("Сколько километров спортсмен пробежал в первый день?: ")
     s_target_km = input("Сколько километров требуется пробежать спортсмену?: ")
     if not s_start_km.isdigit() or not s_target_km.isdigit():
         print("Введены некорректные значения")
     n_start_km=int(s_start_km)
     n_target_km=int(s_target_km)
-    while n_start_km + n_start_km * n_day_of_target * 0.1 <= n_target_km:
+    n_prev_day_km=n_start_km
+    while n_prev_day_km < n_target_km:
         n_day_of_target += 1
+        n_prev_day_km=n_prev_day_km+n_prev_day_km*0.1
+        print(f"День: {n_day_of_target}, расстояние: {round(n_prev_day_km,2)} км")
+
         if n_day_of_target > 365 * 10:
             print("Цель недостижима :(")
             return
