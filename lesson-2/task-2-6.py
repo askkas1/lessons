@@ -18,11 +18,16 @@
 # “ед”: [“шт.”]
 # }
 
-# 1 - Создание структуры товаров
-list_param = []
-global_list_product=[]
-analit_dict={}
+list_param = ["название", "цена", "количество", "ед"]
+global_list_product = [(1, {"название": "компьютер", "цена": 20000, "количество": 5, "eд": "шт."}),
+                       (2, {"название": "принтер", "цена": 6000, "количество": 2, "eд": "шт."}),
+                       (3, {"название": "сканер", "цена": 2000, "количество": 7, "eд": "шт."})]
 
+list_param = []  ## REMOVE THIS FOR AUTOCOMPLETE
+global_list_product = []  ## REMOVE THIS FOR AUTOCOMPLETE
+
+
+# 1 - Создание структуры товаров
 def make_structure():
     i = 1
     print()
@@ -43,9 +48,7 @@ def make_structure():
 # 2 - Добавление новых товаров в кортеж
 
 def add_product():
-    typle_product = ()
     dict_product = {}
-    list_param = {"Наименование","Цена"}
     if len(list_param) == 0:
         print("Для начала введите структуру товаров!")
         return
@@ -66,54 +69,56 @@ def add_product():
     for r in list_param:
         s_value = input(f"Введите значение параметра {r}: ")
         try:
-            user_value=int(s_value)
+            user_value = int(s_value)
         except:
             try:
-                user_value=float(s_value)
+                user_value = float(s_value)
             except:
-                user_value=s_value
+                user_value = s_value
 
         dict_product.update({r: user_value})
     print()
     print("Словарь характеристик продукта: ")
     print(dict_product)
     print()
-    product_counter=len(global_list_product)+1
-    typle_product=product_counter,dict_product
+    product_counter = len(global_list_product) + 1
+    tuple_product = product_counter, dict_product
     print()
     print("Кортеж продуктов:")
-    print(typle_product)
-    global_list_product.append(typle_product)
+    print(tuple_product)
+    global_list_product.append(tuple_product)
     print("Глобальный список продуктов:")
     print(global_list_product)
 
 
 def print_products():
-    global_list_product = [(1, {"название": "компьютер", "цена": 20000, "количество": 5, "eд": "шт."}),
-                           (2, {"название": "принтер", "цена": 6000, "количество": 2, "eд": "шт."}),
-                           (3, {"название": "сканер", "цена": 2000, "количество": 7, "eд": "шт."})]
-    t=global_list_product[0]
-    tl=t[1]
-    print(global_list_product[0][1])
-    print("------")
-    for t in global_list_product:
-        print(f"Номер товара: {t[0]}")
-        for par,val in global_list_product[t[0]-1][1].items():
-                print(f"     {par}: {val}")
+    index = 0
+    while index < len(global_list_product):
+        print(f"Номер товара: {global_list_product[index][0]}")
+        for par, val in global_list_product[index][1].items():
+            print(f"    {par} : {val}")
+        index += 1
 
 
+def get_analytic():
+    dict_of_analytic = {}
 
+    if len(global_list_product) == 0:
+        print("Список товаров пуст")
+        return
 
-#   for l in global_list_product:
-
-
-  #      for par,val in global_list_product[l].
+    for r in global_list_product[0][1].keys():
+        index = 0
+        list_of_values = []
+        while index < len(global_list_product):
+            if list_of_values.count(global_list_product[index][1].get(r)) == 0:
+                list_of_values.append(global_list_product[index][1].get(r))
+            index += 1
+        dict_of_analytic.update({r: list_of_values})
+    print(dict_of_analytic)
 
 
 # MAIN MENU
-
-
-
 
 while 1 == 1:
     print("---- База данных товаров ----")
@@ -135,8 +140,10 @@ while 1 == 1:
         make_structure()
     elif n_menu == 2:
         add_product()
-    elif n_menu ==3:
+    elif n_menu == 3:
         print_products()
+    elif n_menu == 4:
+        get_analytic()
     elif n_menu == 0:
         exit()
     else:
