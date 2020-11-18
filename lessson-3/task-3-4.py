@@ -6,27 +6,26 @@
 # **, предусматривающая использование цикла.
 
 def get_pov(a, b):
-    if a.isdigit and b.isdigit:
-        res = 1 / abs(int(a)) ** abs(int(b))
-    else:
+    try:
+        res = 1 / abs(float(a)) ** abs(int(b))
+    except:
         print("Введены не корректные числа")
         res = 0
-    return res
+    return round(res,10)
 
 
 def get_pov_cycle(a, b):
     res = 0
-    if a.isdigit and b.isdigit:
+    try:
         i = 1
-        res = int(a)
+        res = float(a)
         while i < abs(int(b)):
-            res = res * int(a)
+            res = res * float(a)
             i += 1
         res = 1 / res
-    else:
+    except:
         print("Введены не корректные числа")
-
-    return res
+    return round(res,10)
 
 
 s_a = input("Введите первое число: ")
