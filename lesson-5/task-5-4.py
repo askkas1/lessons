@@ -1,20 +1,15 @@
+# Создать (не программно) текстовый файл со следующим содержимым: One — 1 Two — 2 Three — 3 Four — 4 Необходимо
+# написать программу, открывающую файл на чтение и считывающую построчно данные. При этом английские числительные
+# должны заменяться на русские. Новый блок строк должен записываться в новый текстовый файл.
+
 words_dict = {"one": "Один", "two": "Два", "three": "Три", "four": "Четыре"}
-# ffile = open("task-5-4.txt", "r")
-# ffile_new = open("task-5-4-rus.txt", "w")
-# for r in ffile:
-#     if len(r) == 0:
-#         break
-#     str = r.split()
-#     new_string = []
-#     new_string.append(words_dict.get(str.pop(0).lower()))
-#     new_string.insert(str)
-#     new_string.append('\n')
-#     ffile_new.writelines(new_string)
-#
-# ffile.close()
-# ffile_new.close()
-ffile_new = open("task-5-4-rus.txt", "w")
-with open("task-5-4.txt", "r") as ffile:
-    for line in ffile.split():
-        print(words_dict.get(line.pop(0).lower())+" ".join(line),file=ffile_new)
+
+ffile_new = open("task-5-4-rus.txt", "w", encoding="utf-8")
+with open("task-5-4.txt", "r", encoding="utf-8") as ffile:
+    for line in ffile:
+        file_string = line.split()
+        try:
+            print(words_dict.get(file_string.pop(0).lower()) + " " + " ".join(file_string), file=ffile_new)
+        except:
+            print(f"Некорректная строка: {' '.join(line.split())}", file=ffile_new)
 ffile_new.close()
