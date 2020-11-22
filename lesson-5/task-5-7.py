@@ -30,4 +30,4 @@ print(dict_company)
 print(itog_list)
 
 with open("task-5-7-result.json", 'w', encoding='utf-8') as ffile:
-    json.dump(itog_list, ffile, ensure_ascii=False)
+    json.dump(itog_list, ffile, ensure_ascii=False, sort_keys=True, indent=4)
