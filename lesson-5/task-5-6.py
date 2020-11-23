@@ -11,12 +11,8 @@ import re
 from functools import reduce
 
 
-def f_sum(prev, current):
-    return int(prev) + int(current)
-
-
 ffile = open("task-5-6.txt", "r", encoding='utf-8')
 subject_dict = {}
 for file_str in ffile:
-    subject_dict.update({file_str.split(":")[0]: reduce(f_sum, re.findall(r'\d+', file_str))})
+    subject_dict.update({file_str.split(":")[0]: sum(map, int(re.findall(r'\d+', file_str)))})
 print(subject_dict)

@@ -12,21 +12,12 @@ import json
 n_profit = 0
 n_lines = 0
 n_avg_profit = 0
-itog_list = []
-dict_company = {}
 with open("task-5-7.txt", 'r', encoding='utf-8') as ffile:
-    for line in ffile:
-        line_list = line.split()
-        print(line_list)
-        dict_company.update({line_list[0]: int(line_list[2]) - int(line_list[3])})
-        if int(line_list[2]) > int(line_list[3]):
-            n_profit += int(line_list[2])
-            n_lines += 1
-n_avg_profit = round(n_profit / n_lines, 2)
-itog_list.append(dict_company)
-itog_list.append({"average_profit": n_avg_profit})
-print(n_avg_profit)
-print(dict_company)
+    dict_company = {line.split()[0]: int(line.split()[2]) - int(line.split()[3]) for line in ffile}
+    itog_list = [dict_company, ({"average_profit": round(sum([s for s in dict_company.values() if s > 0]) /
+                                                         len([s for s in dict_company.values() if s > 0]), 2)
+                                 })
+                 ]
 print(itog_list)
 
 with open("task-5-7-result.json", 'w', encoding='utf-8') as ffile:
