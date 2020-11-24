@@ -5,12 +5,12 @@
 # Проверить работу примера на реальных данных (создать экземпляры класса Position, передать данные, проверить значения атрибутов, вызвать методы экземпляров).
 
 class Worker:
-    _income = {"salary": 80000, "bonus": 25000}
 
-    def __init__(self, name, surname, position):
+    def __init__(self, name, surname, position,sal,bon):
         self.name = name
         self.surname = surname
         self.position = position
+        self._income = {"salary": sal, "bonus": bon}
 
 
 class Position(Worker):
@@ -21,6 +21,6 @@ class Position(Worker):
         return sum(self._income.values())
 
 
-ivanov = Position("Иван", "Петров", "Инженер-программист")
+ivanov = Position("Иван", "Петров", "Инженер-программист",50000,30000)
 print(ivanov.get_full_name())
 print(ivanov.get_full_salary())
