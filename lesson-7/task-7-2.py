@@ -13,21 +13,21 @@ class Clothes(ABC):
 class Palto(Clothes):
     def __init__(self, size):
         super().__init__()
-        self._size = size
+        self.__size = size
 
     @property
     def rashod(self):
-        return round(self._size / 6.5 + 0.5, 3)
+        return round(self.__size / 6.5 + 0.5, 3)
 
 
 class Costume(Clothes):
     def __init__(self, height):
         super().__init__()
-        self._height = height
+        self.__height = height
 
     @property
     def rashod(self):
-        return round(2 * self._height + 0.3, 3)
+        return round(2 * self.__height + 0.3, 3)
 
 
 p = Palto(38)

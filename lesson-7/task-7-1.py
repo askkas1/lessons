@@ -6,10 +6,7 @@ class Matrix:
         self.matrix = matrix
 
     def __str__(self):
-        res = ""
-        for i in self.matrix:
-            res = res + "\t".join(map(str, i)) + "\n"
-        return res
+        return "\n".join(["\t".join([str(item) for item in line]) for line in self.matrix])
 
     def get_element(self, i, j):
         return self.matrix[i - 1][j - 1]
