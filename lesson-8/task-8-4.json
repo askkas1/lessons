@@ -1,0 +1,46 @@
+[
+    {
+        "category": "Xerox",
+        "code": "Xerox-001",
+        "department": "IT",
+        "obj": {
+            "code": "Xerox-001",
+            "count_lotkov": 2,
+            "mass": 6,
+            "price": 13500
+        }
+    },
+    {
+        "category": "Xerox",
+        "code": "Xerox-002",
+        "department": "CEO",
+        "obj": {
+            "code": "Xerox-002",
+            "count_lotkov": 4,
+            "mass": 15,
+            "price": 50000
+        }
+    },
+    {
+        "category": "Scanner",
+        "code": "ii",
+        "department": "oo",
+        "obj": {
+            "code": "ii",
+            "lamp_resource": 3,
+            "mass": 2,
+            "price": 1
+        }
+    },
+    {
+        "category": "Xerox",
+        "code": "XXX",
+        "department": "DIRECTOR",
+        "obj": {
+            "code": "XXX",
+            "count_lotkov": 1,
+            "mass": 5,
+            "price": 1500
+        }
+    }
+]
