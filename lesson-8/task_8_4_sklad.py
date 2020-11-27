@@ -11,8 +11,6 @@ class Sklad:
 
     def reset_sklad(self):
         self.dwh = []
-        self.cnt = 0
-        self.mass = 0
 
     def save_to_file(self):
         with open("task-8-4.db", "wb") as ffile:
@@ -62,7 +60,8 @@ class Sklad:
         return [dict for dict in self.dwh if dict['code'] == code]
 
     def get_info(self, code=False):
-        res = f'\nОбъектов на складе: {self.cnt}\nМасса объектов: {self.mass} кг.\n'
+        res = f'\nОбъектов на складе: {len(self.dwh)}\nМасса объектов: {sum([d.get("obj").mass for d in self.dwh])} кг.\n'
+
         for i, r in enumerate(self.dwh):
             if code:
                 if r['code'] == code:
@@ -76,8 +75,6 @@ class Sklad:
 
     def add_tech(self, obj, department):
         if not self.check_code(obj.code):
-            self.cnt += 1
-            self.mass += obj.mass
             dict = {}
             dict.update({"code": obj.code})
             dict.update({"category": obj.category})
@@ -89,7 +86,7 @@ class Sklad:
             print(f"Ошибка, объект с идентификатором {obj.code} уже имеется на складе")
 
     def remove_tech(self,code):
-
+        [self.dwh.remove(dict) for dict in self.dwh if dict['code'] == code]
 
     def change_department(self, code, new_department):
         for r in list(self.dwh):
