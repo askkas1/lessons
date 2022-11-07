@@ -41,7 +41,7 @@ def p_task_2():
 
 
 def p_task_3():
-    x = input("Введите целое число: ")
+    x = input("Введите целое число : ")
     if not x.isdigit():
         print("Некорректный ввод")
         return
